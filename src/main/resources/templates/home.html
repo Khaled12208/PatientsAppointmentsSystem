@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Today Medical System</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+
+<div class="page-wrapper">
+    <div class="home-container">
+        <img src="assets/icons/logo.png" alt="Logo" />
+        <div class="welcome-msg">
+            <h1>Welcome to Today's Clinic</h1>
+            <p>Your health is our top priority. Explore our services and get the care you need.</p>
+        </div>
+        <section class="features">
+            <h2>Our Services</h2>
+            <div class="features-container">
+                <div class="feature">
+                    <img src="assets/icons/consultation.png" alt="Consultation" class="feature-icon" />
+                    <h3>Consultation</h3>
+                    <p>Get expert advice from our qualified doctors and specialists.</p>
+                </div>
+                <div class="feature">
+                    <img src="assets/icons/emergency.png" alt="Emergency Care" class="feature-icon" />
+                    <h3>Emergency Care</h3>
+                    <p>24/7 emergency services to handle critical situations with prompt attention.</p>
+                </div>
+                <div class="feature">
+                    <img src="assets/icons/appointment.png" alt="Appointments" class="feature-icon" />
+                    <h3>Appointments</h3>
+                    <p>Schedule your appointments easily online or by phone.</p>
+                </div>
+            </div>
+        </section>
+        <section class="testimonials">
+            <h2>What Our Patients Say</h2>
+            <div class="testimonial-container">
+                <div class="testimonial">
+                    <p>"The care I received at Today's Clinic was exceptional. The staff were professional and compassionate."</p>
+                    <span>- Jane Doe</span>
+                </div>
+                <div class="testimonial">
+                    <p>"I appreciate the convenience of online appointments and the efficiency of the medical team."</p>
+                    <span>- John Smith</span>
+                </div>
+            </div>
+        </section>
+        <div class="cta">
+            <h2>Ready to Experience Quality Care?</h2>
+            <a class="book-btn" th:href="@{/appointment}">Book an Appointment</a>
+        </div>
+    </div>
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

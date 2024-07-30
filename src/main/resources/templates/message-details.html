@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message Details</title>
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}">
+</head>
+<body>
+<!-- Include Header -->
+<div th:replace="fragments/header :: header"></div>
+
+<div class="page-wrapper">
+    <main class="home-container">
+        <div class="message-dtl-container">
+            <h1>Message Details</h1>
+            <section class="message-dtl">
+                <p><strong>Name:</strong> <span th:text="${message.name}">John Doe</span></p>
+                <p><strong>Phone:</strong> <span th:text="${message.phone}">1234567890</span></p>
+                <p><strong>Email:</strong> <span th:text="${message.email}">john.doe@example.com</span></p>
+                <p><strong>Subject:</strong> <span th:text="${message.subject}">Inquiry</span></p>
+                <p><strong>Message:</strong> <span th:text="${message.message}">I have a question about your services.</span></p>
+                <p><strong>Status:</strong> <span th:text="${message.status}">New</span></p>
+                <p><strong>Created At:</strong> <span th:text="${#temporals.format(message.createdAt,'yyyy-MM-dd HH:mm:ss')}">2024-07-30 10:00:00</span></p>
+            </section>
+            <a href="/message" onclick="window.history.back();" class="action-btn">Back</a>
+        </div>
+        <form th:action="@{/message/reply}" method="post">
+            <input type="hidden" name="recipientEmail" th:value="${message.email}"/>
+
+            <div>
+                <label for="replyMessage">Reply Message:</label>
+                <textarea id="replyMessage" name="replyMessage" rows="4" cols="50" required></textarea>
+            </div>
+            <button type="submit" class="action-btn">Send Reply</button>
+        </form>
+    </main>
+</div>
+
+<!-- Include Footer -->
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

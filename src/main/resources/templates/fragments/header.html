@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>About Us | Today's Medical System</title>
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}">
+</head>
+<body>
+<header class="header">
+    <div class="logo-container">
+        <div class="logo-part">
+            <a  th:href="@{/home}">
+            <img th:src="@{/assets/icons/logo.png}" alt="Logo" />
+            </a>
+        </div>
+        <div class="logo-part">
+            Today's Clinic
+            <span class="subtext">Putting Your Health First, Always</span>
+        </div>
+    </div>
+    <nav class="nav-bar">
+        <a class="nav-btn" th:href="@{/home}">Home</a>
+        <a class="nav-btn" th:href="@{/about}">About</a>
+        <a class="nav-btn" th:href="@{/appointment}">Appointments</a>
+        <a class="nav-btn" th:href="@{/contact}" sec:authorize="!hasRole('ROLE_Admin')">Contact</a>
+
+        <!-- Links visible to authenticated users (logged in) -->
+        <a class="nav-btn" th:href="@{/dashboard}" sec:authorize="isAuthenticated()">Dashboard</a>
+        <!-- Links visible to anonymous users (not logged in) -->
+        <a class="nav-btn" th:href="@{/message}" sec:authorize="hasRole('ROLE_Admin')">Messages</a>
+        <a class="nav-btn" th:href="@{/logout}" sec:authorize="isAuthenticated()">Logout</a>
+
+        <!-- Links visible to anonymous users (not logged in) -->
+        <a class="nav-btn" th:href="@{/login}" sec:authorize="isAnonymous()">Login</a>
+        <a class="nav-btn" th:href="@{/signup}" sec:authorize="isAnonymous()">Signup</a>
+
+
+    </nav>
+
+</header>

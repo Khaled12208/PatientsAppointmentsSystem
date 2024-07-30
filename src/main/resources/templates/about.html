@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About Us | Today's Medical System</title>
+  <link rel="stylesheet" th:href="@{/assets/css/style.css}" />
+</head>
+<body>
+<!-- Include Header Fragment -->
+<div th:replace="fragments/header :: header"></div>
+
+<div class="page-wrapper">
+  <main class="about-container">
+    <h1>About Us</h1>
+    <section class="hospital-info">
+      <h2>Welcome to Today's Clinic</h2>
+      <p>
+        At Today's Clinic, we are dedicated to providing high-quality
+        healthcare services to the community. Our team of experienced
+        professionals is committed to delivering personalized care with a
+        focus on compassion and excellence.
+      </p>
+      <p>
+        Established in 2020, our hospital has grown to become a trusted
+        provider of medical services in the region. Our state-of-the-art
+        facilities and advanced technology ensure that our patients receive
+        the best possible care.
+      </p>
+    </section>
+    <section class="services">
+      <h2>Our Services</h2>
+      <div class="service">
+        <h3>Consultation</h3>
+        <p>
+          Our consultation services include comprehensive assessments and
+          personalized treatment plans. Our specialists are here to provide
+          expert advice and support for your healthcare needs.
+        </p>
+      </div>
+      <div class="service">
+        <h3>Follow-Up Care</h3>
+        <p>
+          We offer follow-up care to ensure that our patients' recovery is
+          on track. Our team will work with you to monitor progress and
+          adjust treatments as necessary.
+        </p>
+      </div>
+      <div class="service">
+        <h3>Check-Ups</h3>
+        <p>
+          Regular check-ups are essential for maintaining good health. We
+          provide routine exams and screenings to detect any potential
+          issues early and keep you in optimal health.
+        </p>
+      </div>
+    </section>
+    <section class="staff">
+      <h2>Our Dedicated Team</h2>
+      <div class="staff-list">
+        <div class="staff-member">
+          <img th:src="@{/assets/images/dr-alice-johnson.png}" alt="Dr. Alice Johnson" class="staff-img" />
+          <h3>Dr. Alice Johnson</h3>
+          <p>Specialty: Cardiologist</p>
+          <p>
+            Email: <a href="mailto:alice.johnson@mywebsite.com">alice.johnson@mywebsite.com</a>
+          </p>
+          <p>Phone: <a href="tel:+1234567891">(123) 456-7891</a></p>
+        </div>
+        <div class="staff-member">
+          <img th:src="@{/assets/images/dr-mark-stevens.jpg}" alt="Dr. Mark Stevens" class="staff-img" />
+          <h3>Dr. Mark Stevens</h3>
+          <p>Specialty: General Practitioner</p>
+          <p>
+            Email: <a href="mailto:mark.stevens@mywebsite.com">mark.stevens@mywebsite.com</a>
+          </p>
+          <p>Phone: <a href="tel:+1234567892">(123) 456-7892</a></p>
+        </div>
+        <div class="staff-member">
+          <img th:src="@{/assets/images/nurse-emma-williams.png}" alt="Nurse Emma Williams" class="staff-img" />
+          <h3>Nurse Emma Williams</h3>
+          <p>Specialty: Pediatrics</p>
+          <p>
+            Email: <a href="mailto:emma.williams@mywebsite.com">emma.williams@mywebsite.com</a>
+          </p>
+          <p>Phone: <a href="tel:+1234567893">(123) 456-7893</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<!-- Include Footer Fragment -->
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

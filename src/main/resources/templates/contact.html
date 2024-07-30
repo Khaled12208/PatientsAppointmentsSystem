@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact Us | Today's Medical System</title>
+  <!-- Use Thymeleaf syntax for CSS -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+<!-- Include Header -->
+<div th:replace="fragments/header :: header"></div>
+
+<div class="page-wrapper">
+  <div class="home-container">
+    <div class="contact-container">
+      <h1>Contact Us</h1>
+      <form action="/saveMsg" method="POST" th:object="${message}">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+        <div class="form-group">
+          <label for="phone">phone:</label>
+          <input type="tel" id="phone" name="phone" required />
+        </div>
+        <div class="form-group">
+          <label for="subject">subject:</label>
+          <input type="tel" id="subject" name="subject" required />
+        </div>
+        <div class="form-group">
+          <label for="message">Message:</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+        <div class="form-group">
+          <button class="submit-btn" type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Include Footer -->
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

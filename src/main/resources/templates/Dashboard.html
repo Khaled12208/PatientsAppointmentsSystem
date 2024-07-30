@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dashboard | Today's Medical System</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+<!-- Include Header -->
+<div th:replace="fragments/header :: header"></div>
+
+<div class="page-wrapper">
+  <main class="home-container">
+    <div class="dashboard-container">
+      <h1>Dashboard</h1>
+      <div th:text="'Welcome, ' + ${username}" class="user-name"></div>
+      <section class="appointments-section">
+        <h2>Booked Appointments</h2>
+        <table class="appointments-table">
+          <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Service</th>
+            <th sec:authorize="hasRole('ROLE_Admin')">Status</th>
+            <th sec:authorize="hasRole('ROLE_Admin')">Action</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr th:each="appointment : ${appointments}">
+            <td th:text="${appointment.user.firstName}">John Doe</td>
+            <td th:text="${appointment.user.email}">john.doe@example.com</td>
+            <td th:text="${appointment.user.phone}">(123) 456-7890</td>
+            <td th:text="${#temporals.format(appointment.appointmentDate,'yyyy-MM-dd')}">2024-07-30</td>
+            <td th:text="${#temporals.format(appointment.appointmentTime)}">10:00</td>
+            <td th:text="${appointment.reason}">Consultation</td>
+            <td sec:authorize="hasRole('ROLE_Admin')">
+                <span th:classappend="${appointment.status == 'Pending'} ? 'status pending' : 'status done'"
+                      th:text="${appointment.status}">Pending</span>
+            </td>
+            <td sec:authorize="hasRole('ROLE_Admin')" >
+              <button th:if="${appointment.status == 'Pending'}" class="action-btn">Mark as Done</button>
+              <button th:if="${appointment.status == 'Done'}" class="action-btn" disabled>Mark as Done</button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </section>
+    </div>
+  </main>
+</div>
+
+<!-- Include Footer -->
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

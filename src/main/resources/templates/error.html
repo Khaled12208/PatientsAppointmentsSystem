@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Error - Today's Medical System</title>
+  <!-- Use Thymeleaf syntax for CSS files -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+<body>
+<!-- Include Header Fragment -->
+<div th:replace="fragments/header :: header"></div>
+
+<div class="page-wrapper">
+  <div class="home-container">
+    <div class="error-container">
+      <h1>404 - Page Not Found</h1>
+      <p>Sorry, something went wrong. Please try again later.</p>
+      <p th:text="${errormsg}"></p>
+      <a class="book-btn" th:href="@{/home}">Go to Home</a>
+    </div>
+  </div>
+</div>
+
+<!-- Include Footer Fragment -->
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

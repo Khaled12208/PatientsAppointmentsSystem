@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login - Today's Medical System</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+<!-- Include Header -->
+<div th:replace="fragments/header :: header"></div>
+
+<!-- Page Wrapper to handle scrolling -->
+<div class="page-wrapper">
+  <main class="home-container">
+    <div class="login-container">
+      <h1>Login</h1>
+      <form th:action="@{/login}" method="post">
+        <li class="error-message" role="alert" th:if="${!#strings.isEmpty(errorMessage)}"
+            th:text="${errorMessage}" />
+        <div class="form-group">
+          <label for="username">Username:</label>
+          <input type="text" id="username" name="username" required />
+        </div>
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required />
+        </div>
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+        <div class="form-group button-row">
+          <button type="submit" class="submit-btn">Login</button>
+          <a th:href="@{/signup}" class="btn-new-user">New User ?</a>
+        </div>
+      </form>
+    </div>
+  </main>
+</div>
+
+<!-- Include Footer -->
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>
