@@ -43,7 +43,7 @@ Watch the [video demo](demo.mp4) to see the system in action and explore its fea
 2. **Navigate to the Project Directory**
 
     ```bash
-    cd clinic-management-system
+    cd PatientsAppointmentsSystem
     ```
 
 3. **Build and Run**
