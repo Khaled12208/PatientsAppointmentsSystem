@@ -37,7 +37,7 @@ Watch the [video demo](demo.mp4) to see the system in action and explore its fea
 1. **Clone the Repository**
 
     ```bash
-    git clone https://github.com/your-username/clinic-management-system.git
+    git clone https://github.com/Khaled12208/PatientsAppointmentsSystem.git
     ```
 
 2. **Navigate to the Project Directory**
