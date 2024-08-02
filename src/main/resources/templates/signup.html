@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -14,34 +15,61 @@
   <main class="home-container">
     <div class="signup-container">
       <h1>Sign Up</h1>
-      <form action="/saveUser" method="post" th:object="${user}">
-        <div class="form-group">
-          <label for="firstname">First Name:</label>
-          <input type="text" id="firstname" name="firstName" required />
+      <div class="success-message" role="alert" th:if="${!#strings.isEmpty(successMessage)}"
+           th:text="${successMessage}"></div>
+      <form class="form-grid" th:action="@{/saveUser}" method="POST" th:object="${user}">
+        <div class="form-item">
+          <div class="form-group">
+            <label for="firstname">First Name:</label>
+            <input type="text" id="firstname" th:field="*{firstName}" required />
+            <span class="error-message" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></span>
+          </div>
+          <div class="form-group">
+            <label for="lastname">Last Name:</label>
+            <input type="text" id="lastname" th:field="*{lastName}" required />
+            <span class="error-message" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></span>
+          </div>
         </div>
-        <div class="form-group">
-          <label for="lastname">Last Name:</label>
-          <input type="text" id="lastname" name="lastName" required />
+        <div class="form-item">
+          <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" id="username" th:field="*{username}" required />
+            <span class="error-message" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span>
+          </div>
+          <div class="form-group">
+            <label for="role">User Role:</label>
+            <div class="custom-select-wrapper">
+              <select id="role" th:field="*{role}"  th:disabled="${isDisabled}" required>
+                <option value="User" th:selected="${user.role == 'User'}">USER</option>
+                <option value="Admin" th:selected="${user.role == 'Admin'}">ADMIN</option>
+              </select>
+            </div>
+            <span class="error-message" th:if="${#fields.hasErrors('role')}" th:errors="*{role}"></span>
+          </div>
         </div>
-        <div class="form-group">
-          <label for="username">Username:</label>
-          <input type="text" id="username" name="username" required />
+        <div class="form-item">
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" th:field="*{email}" required />
+            <span class="error-message" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" th:field="*{phone}" required />
+            <span class="error-message" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></span>
+          </div>
         </div>
-        <div class="form-group">
-          <label for="email">Email:</label>
-          <input type="email" id="email" name="email" required />
-        </div>
-        <div class="form-group">
-          <label for="phone">phone:</label>
-          <input type="phone" id="phone" name="phone" required />
-        </div>
-        <div class="form-group">
-          <label for="password">Password:</label>
-          <input type="password" id="password" name="password" required />
-        </div>
-        <div class="form-group">
-          <label for="confirm-password">Confirm Password:</label>
-          <input type="password" id="confirm-password" name="confirmPassword" required />
+        <div class="form-item">
+          <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" th:field="*{password}" required />
+            <span class="error-message" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+          </div>
+          <div class="form-group">
+            <label for="confirm-password">Confirm Password:</label>
+            <input type="password" id="confirm-password" th:field="*{confirmPassword}" required />
+            <span class="error-message" th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}"></span>
+          </div>
         </div>
         <div class="form-group">
           <button type="submit" class="submit-btn">Sign Up</button>

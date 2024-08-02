@@ -22,7 +22,7 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf
                         .ignoringRequestMatchers("/", "/home", "/contact", "/about", "/login","/signup","/processLogin","/saveUser", "/resources/**", "/assets/**","/h2-console","/saveMsg","/saveAppointment","/message-details")
-                        .ignoringRequestMatchers("/h2-console/**") // Disable CSRF for H2 console
+                        .ignoringRequestMatchers("/h2-console/**","/saveUser","/signup") // Disable CSRF for H2 console
                 )
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/h2-console/**").permitAll()

@@ -44,7 +44,7 @@
                       th:text="${appointment.status}">Pending</span>
             </td>
             <td sec:authorize="hasRole('ROLE_Admin')" >
-              <button th:if="${appointment.status == 'Pending'}" class="action-btn">Mark as Done</button>
+              <button th:if="${appointment.status == 'Pending'}" class="action-btn" th:data-id="${appointment.appointmentId}">Mark as Done</button>
               <button th:if="${appointment.status == 'Done'}" class="action-btn" disabled>Mark as Done</button>
             </td>
           </tr>
@@ -54,7 +54,8 @@
     </div>
   </main>
 </div>
-
+<meta name="_csrf" th:content="${_csrf.token}"> <!-- CSRF Token -->
+<script src="assets/js/appointment.js" defer></script> <!-- Link to external JavaScript file -->
 <!-- Include Footer -->
 <div th:replace="fragments/footer :: footer"></div>
 </body>

@@ -36,4 +36,16 @@ public class AppointmentService {
 
         }
     }
+
+    public void markAsDone(Long id) {
+        Appointment appointment = appointmentRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Appointment not found"));
+
+        if ("Pending".equals(appointment.getStatus())) {
+            appointment.setStatus("Done");
+            appointmentRepository.save(appointment);
+        } else {
+            throw new RuntimeException("Appointment cannot be marked as done");
+        }
+    }
 }

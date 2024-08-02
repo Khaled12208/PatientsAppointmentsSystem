@@ -10,6 +10,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -26,5 +27,7 @@ public class DashboardController {
         model.addAttribute("username", StringUtils.toCamelCase(user.getFirstName())+" "+StringUtils.toCamelCase(user.getLastName()));
         return "dashboard.html";
     }
+
+
 
 }

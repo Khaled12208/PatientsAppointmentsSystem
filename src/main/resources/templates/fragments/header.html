@@ -24,6 +24,7 @@
         <a class="nav-btn" th:href="@{/home}">Home</a>
         <a class="nav-btn" th:href="@{/about}">About</a>
         <a class="nav-btn" th:href="@{/appointment}">Appointments</a>
+        <a class="nav-btn" th:href="@{/signup}">Signup</a>
         <a class="nav-btn" th:href="@{/contact}" sec:authorize="!hasRole('ROLE_Admin')">Contact</a>
 
         <!-- Links visible to authenticated users (logged in) -->
@@ -34,7 +35,6 @@
 
         <!-- Links visible to anonymous users (not logged in) -->
         <a class="nav-btn" th:href="@{/login}" sec:authorize="isAnonymous()">Login</a>
-        <a class="nav-btn" th:href="@{/signup}" sec:authorize="isAnonymous()">Signup</a>
 
 
     </nav>

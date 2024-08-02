@@ -8,11 +8,14 @@ import com.clinic.PatientsAppointmentsSystem.model.User;
 import com.clinic.PatientsAppointmentsSystem.repository.UserRepository;
 import com.clinic.PatientsAppointmentsSystem.service.AppointmentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
@@ -31,16 +34,12 @@ public class AppointmentController {
         return "appointment.html";
     }
 
-    @RequestMapping(value = "/saveAppointment",method = POST)
-    public String createUser(@ModelAttribute("appointment")AppointmentDTO appointmentDTO, Authentication authentication) {
-        User user = userRepository.findByUsername(authentication.getName()).orElseThrow(() -> new UsernameNotFoundException("user not found"));
-        Appointment appointment =new Appointment();
-        appointment.setUser(user);
-        appointment.setAppointmentDate(appointmentDTO.getAppointmentDate());
-        appointment.setReason(appointmentDTO.getReason());
-        appointment.setAppointmentTime(appointmentDTO.getAppointmentTime());
-        appointment.setStatus("Pending");
-        appointmentService.createAppointment(appointment);
-        return "redirect:/dashboard";
+
+
+    @PostMapping("/appointments/{id}/mark-as-done")
+    public String markAsDone(@PathVariable Long id) {
+            appointmentService.markAsDone(id);
+            return "dashboard.html";
     }
+
 }

@@ -242,19 +242,17 @@ body {
   text-align: center;
 }
 
-/* Form Styles */
-form {
-  display: flex;
-  flex-direction: column; /* Stack form elements vertically */
-  gap: 20px; /* Space between form elements */
-  margin: 0; /* Remove default margin */
-  padding: 20px; /* Add padding for better spacing */
-  width: 100%; /* Full width for the form */
-  max-width: 600px; /* Limit form width */
-  background: #fff; /* Background color for the form */
-  border-radius: 8px; /* Rounded corners */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  position: relative; /* Ensure button can be aligned at the bottom */
+
+.form-grid
+{
+    display: grid;
+    gap: 16px;
+}
+
+.form-item {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
 }
 
 .form-group {
@@ -618,6 +616,7 @@ select {
   outline-offset: 4px;
 }
 
+
 .dashboard-container {
   padding: 20px;
   background: #fff;
@@ -882,7 +881,15 @@ select {
     justify-content: flex-end; /* Align the button to the right */
     margin-top: 10px;
 }
-
+.success-message {
+    background-color: #d4edda; /* Light green background */
+    color: #155724;           /* Dark green text */
+    border: 1px solid #c3e6cb; /* Green border */
+    border-radius: 0.25rem;    /* Optional: rounded corners */
+    padding: 0.75rem 1.25rem;  /* Padding */
+    margin: 1rem 0;            /* Margin for spacing */
+    list-style: none;          /* Remove default list styling */
+}
 
 
 /* Responsive Design */
